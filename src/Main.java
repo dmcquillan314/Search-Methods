@@ -10,9 +10,11 @@ import java.util.regex.Pattern;
 
 import com.search.methods.node.Node;
 import com.search.methods.node.Path;
+import com.search.methods.queue.AStarQueueFunction;
 import com.search.methods.queue.BredthFirstQueueFunction;
 import com.search.methods.queue.DepthFirstQueueFunction;
 import com.search.methods.queue.GreedyQueueFunction;
+import com.search.methods.queue.HeuristicQueueFunction;
 import com.search.methods.search.Search;
 
 public class Main {
@@ -23,7 +25,9 @@ public class Main {
 	@SuppressWarnings("resource")
 	public static void main(String[] args) {
 
-		File file = new File("testOtherTree.txt");
+		//File file = new File("testOtherTree.txt");
+		//File file = new File("Testtree.txt");
+		File file = new File("Testtree.txt");
 		Map<String,String> pathMappings = new HashMap<String,String>();
 		List<Node> nodes = new ArrayList<Node>();
 		
@@ -63,9 +67,15 @@ public class Main {
 		System.out.println("Breadth First Search");
 		Node breadthFirstResult = Search.search(rootNode, new BredthFirstQueueFunction());
 		System.out.println( breadthFirstResult );
-		System.out.println("Greedy Search [g(n)]");
+		System.out.println("Greedy Search [h(n)]");
 		Node greedyResult = Search.search(rootNode, new GreedyQueueFunction());
 		System.out.println( greedyResult );
+		System.out.println("Heuristic Search [g(n)]");
+		Node heuristicResult = Search.search(rootNode, new HeuristicQueueFunction());
+		System.out.println( heuristicResult );
+		System.out.println("A*/A Search [f(n)]");
+		Node aStarResult = Search.search(rootNode, new AStarQueueFunction());
+		System.out.println( aStarResult );
 	}
 
 	private static void generatePathMappings(List<Node> nodes, Map<String, String> pathMappings) {
