@@ -27,7 +27,8 @@ public class Main {
 
 		//File file = new File("testOtherTree.txt");
 		//File file = new File("Testtree.txt");
-		File file = new File("Testtree.txt");
+		//File file = new File("tree.txt");
+		File file = new File("problem1.txt");
 		Map<String,String> pathMappings = new HashMap<String,String>();
 		List<Node> nodes = new ArrayList<Node>();
 		
