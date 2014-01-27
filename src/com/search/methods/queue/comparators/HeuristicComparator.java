@@ -8,7 +8,11 @@ public class HeuristicComparator implements Comparator<Node> {
 
 	@Override
 	public int compare(Node left, Node right) {
-		return Integer.compare(getHeightOfNode(left), getHeightOfNode(right));
+		int result = Integer.compare(getHeightOfNode(left), getHeightOfNode(right));
+		if( result == 0 ) {
+			return left.getName().compareTo(right.getName());
+		}
+		return result;
 	}
 	
 	public int getHeightOfNode( final Node node ) {

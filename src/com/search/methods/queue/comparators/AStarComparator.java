@@ -6,6 +6,10 @@ public class AStarComparator extends HeuristicComparator {
 
 	@Override
 	public int compare(Node left, Node right) {
-		return Integer.compare(getHeightOfNode(left) + left.getNodesFromGoal(), getHeightOfNode(right) + right.getNodesFromGoal());
+		int result = Integer.compare(getHeightOfNode(left) + left.getNodesFromGoal(), getHeightOfNode(right) + right.getNodesFromGoal());
+		if( result == 0 ) {
+			return left.getName().compareTo(right.getName());
+		}
+		return result;
 	}
 }
